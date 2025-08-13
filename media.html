@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media - Memorial West Hockey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Modern Navigation */
+        .nav-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 0.5rem;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+        .nav-logo img {
+            width: 28px;
+            height: 28px;
+        }
+        .nav-logo span {
+            color: #22c55e;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            gap: 4px;
+        }
+        
+        .hamburger-line {
+            width: 24px;
+            height: 3px;
+            background: #22c55e;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-btn.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .mobile-menu-btn.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-menu-btn.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        .nav-link {
+            color: #e5e5e5;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+        }
+        .nav-link:hover {
+            color: #22c55e;
+            background: rgba(34, 197, 94, 0.1);
+        }
+        .nav-link.active {
+            color: #22c55e;
+            background: rgba(34, 197, 94, 0.15);
+        }
+        .contact-btn {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #fff;
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        .contact-btn:hover {
+            background: linear-gradient(135deg, #16a34a, #15803d);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+        }
+
+        /* Page Content */
+        .page-content {
+            margin-top: 100px;
+            padding: 2rem;
+        }
+
+        .media-header {
+            height: 40vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/ratio4x3_1920.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+        }
+        .media-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Media Categories */
+        .media-categories {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .category-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        .category-btn:hover,
+        .category-btn.active {
+            background: #22c55e;
+            border-color: #22c55e;
+            transform: translateY(-2px);
+        }
+
+        /* Photo Gallery */
+        .photo-gallery {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+        }
+        .gallery-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #22c55e;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(34, 197, 94, 0.3);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: all 0.3s;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 2rem 1rem 1rem;
+            transform: translateY(100%);
+            transition: all 0.3s;
+        }
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        .gallery-caption {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Video Section */
+        .video-section {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+        }
+        .video-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #22c55e;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+        .video-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .video-item:hover {
+            transform: translateY(-5px);
+            border-color: #22c55e;
+        }
+        .video-thumbnail {
+            width: 100%;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        .video-thumbnail iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .facebook-video iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #000;
+        }
+        .video-info {
+            padding: 1.5rem;
+        }
+        .video-title-small {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #22c55e;
+        }
+        .video-description {
+            color: #a3a3a3;
+            line-height: 1.6;
+        }
+
+        /* Press Coverage */
+        .press-section {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+        }
+        .press-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #22c55e;
+        }
+        .press-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        .press-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+        .press-item:hover {
+            transform: translateY(-5px);
+            border-color: #22c55e;
+        }
+        .press-source {
+            color: #22c55e;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .press-headline {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        .press-excerpt {
+            color: #a3a3a3;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .press-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .press-link {
+            display: inline-block;
+            background: #22c55e;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+        .press-link:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+        }
+
+        /* Social Media Feed */
+        .social-feed {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+        }
+        .social-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #22c55e;
+        }
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .social-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .social-item:hover {
+            transform: translateY(-5px);
+            border-color: #22c55e;
+        }
+        .social-icon-large {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .instagram-icon {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .social-handle {
+            color: #22c55e;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .social-description {
+            color: #a3a3a3;
+            margin-bottom: 1.5rem;
+        }
+        .social-link {
+            display: inline-block;
+            background: #22c55e;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .social-link:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+        }
+
+        /* Social Media Section */
+        .social-section {
+            background: rgba(255,255,255,0.02);
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        .social-section .social-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #22c55e;
+        }
+        .social-section .social-description {
+            color: #a3a3a3;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+        .social-section .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .social-section .social-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 100px;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        .social-section .social-link:hover {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: #22c55e;
+            transform: translateY(-2px);
+        }
+        .social-section .social-icon {
+            font-size: 1.5rem;
+        }
+        .social-section .instagram-link {
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            border-color: #dc2743;
+        }
+        .social-section .instagram-link:hover {
+            background: linear-gradient(45deg, #e6683c 0%,#dc2743 25%,#cc2366 50%,#bc1888 75%,#f09433 100%);
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        /* Responsive Design */
+        
+        /* Large Desktop (1200px and up) */
+        @media (min-width: 1200px) {
+            .page-content {
+                max-width: 1400px;
+                margin: 100px auto 0;
+            }
+            .media-header {
+                height: 45vh;
+            }
+            .media-title {
+                font-size: 4rem;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+                gap: 2.5rem;
+            }
+            .video-grid {
+                grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+                gap: 2.5rem;
+            }
+        }
+        
+        /* Desktop (1024px - 1199px) */
+        @media (max-width: 1199px) and (min-width: 1024px) {
+            .media-header {
+                height: 42vh;
+            }
+            .media-title {
+                font-size: 3.5rem;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 2rem;
+            }
+            .video-grid {
+                grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+                gap: 2rem;
+            }
+        }
+        
+        /* Tablet Landscape (768px - 1023px) */
+        @media (max-width: 1023px) and (min-width: 768px) {
+            .page-content {
+                padding: 1.5rem;
+            }
+            .media-header {
+                height: 38vh;
+            }
+            .media-title {
+                font-size: 3rem;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+            .video-grid {
+                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+            .press-grid {
+                padding: 0 1rem;
+            }
+            .social-grid {
+                padding: 0 1rem;
+            }
+            .media-categories {
+                padding: 0 1rem;
+            }
+        }
+        
+        /* Tablet Portrait (768px and below) */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 1rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: flex;
+            }
+            .nav-container.mobile-open .nav-links {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(18, 18, 18, 0.95);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 16px;
+                margin-top: 0.5rem;
+                padding: 1rem;
+                gap: 0.5rem;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+            }
+            .nav-container.mobile-open .nav-link {
+                padding: 0.75rem 1rem;
+                border-radius: 8px;
+                text-align: center;
+                width: 100%;
+            }
+            .nav-container.mobile-open .contact-btn {
+                margin: 0;
+                text-align: center;
+                width: 100%;
+            }
+            .page-content {
+                padding: 1rem;
+                margin-top: 80px;
+            }
+            .media-header {
+                height: 30vh;
+                margin-bottom: 2rem;
+            }
+            .media-title {
+                font-size: 2.5rem;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+                gap: 1rem;
+            }
+            .video-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+                gap: 1rem;
+            }
+            .press-grid {
+                padding: 0 1rem;
+            }
+            .social-grid {
+                padding: 0 1rem;
+            }
+            .media-categories {
+                padding: 0 1rem;
+            }
+            .category-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            .social-section .social-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            .social-section .social-link {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+        
+        /* Mobile Large (480px - 767px) */
+        @media (max-width: 767px) and (min-width: 480px) {
+            .media-title {
+                font-size: 2.2rem;
+            }
+            .gallery-title,
+            .video-title,
+            .press-title,
+            .social-title {
+                font-size: 1.8rem;
+            }
+            .category-btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* Mobile Small (below 480px) */
+        @media (max-width: 479px) {
+            .page-content {
+                padding: 0.5rem;
+            }
+            .media-header {
+                height: 25vh;
+                margin-bottom: 1.5rem;
+            }
+            .media-title {
+                font-size: 2rem;
+            }
+            .gallery-grid,
+            .video-grid,
+            .press-grid,
+            .social-grid {
+                padding: 0 0.5rem;
+                gap: 0.8rem;
+            }
+            .gallery-title,
+            .video-title,
+            .press-title,
+            .social-title {
+                font-size: 1.6rem;
+                margin-bottom: 1.5rem;
+            }
+            .media-categories {
+                padding: 0 0.5rem;
+                gap: 0.5rem;
+            }
+            .category-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+            .gallery-caption {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Extra Small Mobile (below 360px) */
+        @media (max-width: 359px) {
+            .media-title {
+                font-size: 1.8rem;
+            }
+            .gallery-title,
+            .video-title,
+            .press-title,
+            .social-title {
+                font-size: 1.4rem;
+            }
+            .category-btn {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.7rem;
+            }
+        }
+        
+        /* Landscape Mobile Orientation */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .media-header {
+                height: 25vh;
+            }
+            .page-content {
+                margin-top: 70px;
+            }
+        }
+        
+        /* High DPI Displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .nav-logo img,
+            .gallery-item img {
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-wrapper">
+        <nav class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/memorialwestlogo.png" alt="Memorial West Logo">
+                <span>Memorial West</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="roster.html" class="nav-link">Roster</a>
+                <a href="stats.html" class="nav-link">Live Stats</a>
+                <a href="media.html" class="nav-link active">Media</a>
+                <a href="sponsorships.html" class="nav-link">Sponsorships</a>
+                <a href="contact.html" class="contact-btn">Contact</a>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </nav>
+    </div>
+
+    <div class="page-content">
+        <header class="media-header">
+            <div class="header-content">
+                <h1 class="media-title">Media Center</h1>
+                <p>Photos, videos, press coverage, and social media</p>
+            </div>
+        </header>
+
+        <!-- Media Categories -->
+        <div class="media-categories">
+            <button class="category-btn active" onclick="showSection('photos')">Photos</button>
+            <button class="category-btn" onclick="showSection('videos')">Videos</button>
+            <button class="category-btn" onclick="showSection('press')">Press Coverage</button>
+            <button class="category-btn" onclick="showSection('social')">Social Media</button>
+        </div>
+
+        <!-- Photo Gallery Section -->
+        <section id="photos" class="photo-gallery">
+            <h2 class="gallery-title">Photo Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/citychampteamphoto.jpg" alt="City Championship Team Photo">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">City Champions 2024</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/statechampteamphoto.jpg" alt="State Championship Team Photo">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">State Championship 2024</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/Statefinalists2023.jpeg" alt="Championship Handshake">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">State Finalists 2023</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/ratio4x3_1920.jpg" alt="Team Practice">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">City Championship 2019</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section id="videos" class="video-section" style="display: none;">
+            <h2 class="video-title">Video Highlights</h2>
+            <div class="video-grid">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/d8dNDs2sjJU?start=800" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title-small">Justice Cup City Championship</h3>
+                        <p class="video-description">Memorial West Hockey captures the Justice Cup City Championship - our highest achievement.</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <div class="video-thumbnail facebook-video">
+                        <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D586732927593640&show_text=false&width=500&height=281&appId" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title-small">Memorial West Hockey Facebook Video</h3>
+                        <p class="video-description">Latest highlights and updates from our Facebook page.</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/eTtmUwH8vp4" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title-small">Memorial West Hockey Highlights</h3>
+                        <p class="video-description">Season highlights and key moments from our championship season.</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/FtiIBnNh0N4" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title-small">Memorial West Hockey Game Footage</h3>
+                        <p class="video-description">Game action and player highlights from our competitive season.</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/D5eBFUKvFFA?start=1323" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title-small">Memorial West Hockey Extended Coverage</h3>
+                        <p class="video-description">Extended game coverage and analysis from our season.</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/IaVoo47A3Iw" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title-small">Memorial West Hockey Game Highlights</h3>
+                        <p class="video-description">Key plays and moments from our competitive games.</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/XZUg_O1cy90" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title-small">Memorial West Hockey Season Coverage</h3>
+                        <p class="video-description">Comprehensive coverage of our championship season.</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/moi-XmKCofs" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title-small">Memorial West Hockey Game Action</h3>
+                        <p class="video-description">Live game action and player performances.</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/pln-byQiEGw" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title-small">Memorial West Hockey Houston Coverage</h3>
+                        <p class="video-description">Houston area coverage of our hockey program.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Press Coverage Section -->
+        <section id="press" class="press-section" style="display: none;">
+            <h2 class="press-title">Press Coverage</h2>
+            <div class="press-grid">
+                <div class="press-item">
+                    <div class="press-source">
+                        <i class="fas fa-newspaper"></i>
+                        Houston Chronicle
+                    </div>
+                    <h3 class="press-headline">Memorial West wins first Interscholastic Hockey League championship</h3>
+                    <p class="press-excerpt">Memorial West Hockey secured their first ISHL championship, marking a historic milestone for the program. This victory represents our 3rd City Championship in the last 5 years, establishing our dominance and two decades of presence in Houston hockey.</p>
+                    <a href="https://www.chron.com/neighborhood/memorial/sports/article/Memorial-West-wins-first-Interscholastic-Hockey-13753247.php" target="_blank" class="press-link">Read Full Article</a>
+                    <div class="press-date">February 2024</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media Section -->
+        <section id="social" class="social-feed" style="display: none;">
+            <h2 class="social-title">Social Media</h2>
+            <div class="social-grid">
+                <div class="social-item">
+                    <div class="social-icon-large instagram-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3 class="social-handle">@ishlwhalers</h3>
+                    <p class="social-description">Follow us on Instagram for daily updates, game photos, and behind-the-scenes content.</p>
+                    <a href="https://www.instagram.com/ishlwhalers/?hl=en" target="_blank" class="social-link">Follow on Instagram</a>
+                </div>
+                <div class="social-item">
+                    <div class="social-icon-large">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <h3 class="social-handle">Memorial West Hockey Group</h3>
+                    <p class="social-description">Connect with us on Facebook for team news, event updates, and community engagement.</p>
+                    <a href="https://www.facebook.com/groups/1252904606532474" target="_blank" class="social-link">Join Facebook Group</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media Section -->
+        <section class="social-section">
+            <h2 class="social-title">Follow Us</h2>
+            <p class="social-description">Stay updated with our latest news and achievements on social media.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/ishlwhalers/?hl=en" target="_blank" class="social-link instagram-link">
+                    <i class="fab fa-instagram social-icon"></i>
+                    ISHL Whalers
+                </a>
+                <a href="https://www.facebook.com/groups/1252904606532474" target="_blank" class="social-link">
+                    <i class="fab fa-facebook social-icon"></i>
+                    Memorial West Hockey Group
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Media category switching functionality
+        function showSection(sectionName) {
+            // Hide all sections
+            document.getElementById('photos').style.display = 'none';
+            document.getElementById('videos').style.display = 'none';
+            document.getElementById('press').style.display = 'none';
+            document.getElementById('social').style.display = 'none';
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionName).style.display = 'block';
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        // Gallery item click functionality
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // You can add lightbox functionality here
+                console.log('Gallery item clicked:', this.querySelector('.gallery-caption').textContent);
+            });
+        });
+
+        // Video item click functionality
+        document.querySelectorAll('.video-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // You can add video player functionality here
+                console.log('Video item clicked:', this.querySelector('.video-title-small').textContent);
+            });
+        });
+        
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const navContainer = document.querySelector('.nav-container');
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            
+            navContainer.classList.toggle('mobile-open');
+            mobileBtn.classList.toggle('active');
+        }
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navContainer = document.querySelector('.nav-container');
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!navContainer.contains(event.target)) {
+                navContainer.classList.remove('mobile-open');
+                mobileBtn.classList.remove('active');
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link, .contact-btn').forEach(link => {
+            link.addEventListener('click', function() {
+                const navContainer = document.querySelector('.nav-container');
+                const mobileBtn = document.querySelector('.mobile-menu-btn');
+                
+                navContainer.classList.remove('mobile-open');
+                mobileBtn.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

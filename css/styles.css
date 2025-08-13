@@ -1,0 +1,253 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0a0a0a;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Image Base Styles */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(34, 197, 94, 0.1);
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    margin-right: 12px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #22c55e;
+    background: rgba(34, 197, 94, 0.1);
+}
+
+.contact-btn {
+    background: #22c55e;
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+    background: #16a34a;
+    transform: translateY(-2px);
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.4));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 2rem;
+    text-align: center;
+    color: #ffffff;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.title-line {
+    display: block;
+}
+
+.title-line.highlight {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    color: #a3a3a3;
+    margin-bottom: 2rem;
+}
+
+.hero-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.cta-btn {
+    background: #ffffff;
+    color: #0a0a0a;
+    border: 2px solid #22c55e;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background: #22c55e;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.achievement-text {
+    font-size: 1.2rem;
+    color: #22c55e;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Championship Section */
+.championship-moment {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 20px;
+}
+
+.championship-img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .championship-moment {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem 1rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .cta-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+}
