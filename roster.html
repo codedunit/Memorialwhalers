@@ -165,6 +165,21 @@
             gap: 2rem;
             margin-bottom: 4rem;
         }
+        
+        /* Mobile Grid Optimizations */
+        @media (max-width: 768px) {
+            .coaches-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .coaches-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
         .coach-card {
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(34, 197, 94, 0.2);
@@ -233,6 +248,21 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+        }
+        
+        /* Mobile Players Grid */
+        @media (max-width: 768px) {
+            .roster-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .roster-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
         }
         .player-card {
             background: rgba(255,255,255,0.05);
@@ -352,6 +382,21 @@
             max-width: 800px;
             margin: 0 auto;
         }
+        
+        /* Mobile Leadership Grid */
+        @media (max-width: 768px) {
+            .leadership-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .leadership-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
         .captain {
             border: 2px solid #22c55e;
             background: rgba(34, 197, 94, 0.05);
@@ -389,6 +434,25 @@
             justify-content: center;
             font-weight: bold;
             font-size: 1.2rem;
+        }
+        
+        /* Mobile Badge Scaling */
+        @media (max-width: 768px) {
+            .captain-badge,
+            .assistant-captain-badge {
+                width: 35px;
+                height: 35px;
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .captain-badge,
+            .assistant-captain-badge {
+                width: 40px;
+                height: 40px;
+                font-size: 1.4rem;
+            }
         }
 
         /* Section Titles */
@@ -548,13 +612,56 @@
             .section-title {
                 font-size: 1.8rem;
             }
+            .leadership-title {
+                font-size: 1.6rem;
+            }
             .players-grid {
                 grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             }
+            .coach-photo {
+                height: 250px;
+            }
+            .player-photo {
+                height: 250px;
+            }
             .coach-photo img,
             .player-photo img {
-                width: 120px;
-                height: 120px;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .coach-name {
+                font-size: 1.4rem;
+            }
+            .coach-position {
+                font-size: 1rem;
+            }
+            .player-name {
+                font-size: 1.4rem;
+            }
+            .player-position {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Medium Mobile (400px - 479px) */
+        @media (max-width: 479px) and (min-width: 400px) {
+            .coach-photo {
+                height: 240px;
+            }
+            .player-photo {
+                height: 240px;
+            }
+            .coach-name,
+            .player-name {
+                font-size: 1.4rem;
+            }
+            .coach-position,
+            .player-position {
+                font-size: 1.1rem;
+            }
+            .leadership-title {
+                font-size: 1.5rem;
             }
         }
         
@@ -574,6 +681,10 @@
                 font-size: 1.6rem;
                 margin-bottom: 1.5rem;
             }
+            .leadership-title {
+                font-size: 1.4rem;
+                margin-bottom: 1rem;
+            }
             .coaches-grid {
                 gap: 1rem;
             }
@@ -587,18 +698,25 @@
             .player-card {
                 padding: 0.8rem;
             }
+            .coach-photo {
+                height: 220px;
+            }
+            .player-photo {
+                height: 220px;
+            }
             .coach-photo img,
             .player-photo img {
-                width: 100px;
-                height: 100px;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
             .coach-name,
             .player-name {
-                font-size: 1.1rem;
+                font-size: 1.3rem;
             }
             .coach-position,
             .player-position {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
         }
         
@@ -610,14 +728,32 @@
             .section-title {
                 font-size: 1.4rem;
             }
+            .leadership-title {
+                font-size: 1.2rem;
+            }
             .coach-card,
             .player-card {
                 padding: 0.8rem;
             }
+            .coach-photo {
+                height: 200px;
+            }
+            .player-photo {
+                height: 200px;
+            }
             .coach-photo img,
             .player-photo img {
-                width: 90px;
-                height: 90px;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .coach-name,
+            .player-name {
+                font-size: 1.2rem;
+            }
+            .coach-position,
+            .player-position {
+                font-size: 0.9rem;
             }
         }
         
@@ -637,6 +773,53 @@
             .player-photo img {
                 image-rendering: -webkit-optimize-contrast;
                 image-rendering: crisp-edges;
+            }
+        }
+        
+        /* Mobile Photo Optimization */
+        @media (max-width: 768px) {
+            .coach-photo img,
+            .player-photo img {
+                image-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+            }
+        }
+        
+        /* Touch-friendly photo interactions */
+        @media (hover: none) and (pointer: coarse) {
+            .coach-photo:hover img,
+            .player-photo:hover img {
+                transform: none;
+            }
+            
+            .coach-card:active,
+            .player-card:active {
+                transform: scale(0.98);
+            }
+        }
+        
+        /* Landscape Mobile Orientation */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .coach-photo {
+                height: 180px;
+            }
+            .player-photo {
+                height: 180px;
+            }
+            .coach-name,
+            .player-name {
+                font-size: 1.1rem;
+            }
+            .coach-position,
+            .player-position {
+                font-size: 0.9rem;
+            }
+            .section-title {
+                font-size: 1.4rem;
+                margin-bottom: 1rem;
+            }
+            .leadership-title {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -696,7 +879,7 @@
                 </div>
                 <div class="coach-card">
                     <div class="coach-photo">
-                        <img src="images/CoachTaylor.PNG" alt="Coach Taylor">
+                        <img src="images/CoachTaylor.png" alt="Coach Taylor">
                     </div>
                     <div class="coach-info">
                         <h3 class="coach-name">Coach Taylor</h3>
