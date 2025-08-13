@@ -203,13 +203,36 @@
             overflow: hidden;
             margin-bottom: 1rem;
             position: relative;
+            background: rgba(255,255,255,0.05);
         }
         .coach-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top;
+            object-position: center;
             transition: transform 0.3s ease;
+            display: block;
+        }
+        
+        /* Ensure images are always visible */
+        .coach-photo img:not([src]), 
+        .coach-photo img[src=""],
+        .coach-photo img[src*="undefined"] {
+            display: none;
+        }
+        
+        /* Fallback for missing images */
+        .coach-photo:not(:has(img[src*="Coach"]))::before {
+            content: "Photo";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+            font-weight: 600;
+            font-size: 1.2rem;
         }
         .coach-photo:hover img {
             transform: scale(1.05);
@@ -620,15 +643,20 @@
             }
             .coach-photo {
                 height: 250px;
+                overflow: hidden;
+                border-radius: 15px;
             }
             .player-photo {
                 height: 250px;
+                overflow: hidden;
+                border-radius: 15px;
             }
             .coach-photo img,
             .player-photo img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+                object-position: center;
             }
             .coach-name {
                 font-size: 1.4rem;
@@ -648,9 +676,20 @@
         @media (max-width: 479px) and (min-width: 400px) {
             .coach-photo {
                 height: 240px;
+                overflow: hidden;
+                border-radius: 15px;
             }
             .player-photo {
                 height: 240px;
+                overflow: hidden;
+                border-radius: 15px;
+            }
+            .coach-photo img,
+            .player-photo img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
             }
             .coach-name,
             .player-name {
@@ -700,15 +739,20 @@
             }
             .coach-photo {
                 height: 220px;
+                overflow: hidden;
+                border-radius: 15px;
             }
             .player-photo {
                 height: 220px;
+                overflow: hidden;
+                border-radius: 15px;
             }
             .coach-photo img,
             .player-photo img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+                object-position: center;
             }
             .coach-name,
             .player-name {
@@ -737,15 +781,20 @@
             }
             .coach-photo {
                 height: 200px;
+                overflow: hidden;
+                border-radius: 15px;
             }
             .player-photo {
                 height: 200px;
+                overflow: hidden;
+                border-radius: 15px;
             }
             .coach-photo img,
             .player-photo img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+                object-position: center;
             }
             .coach-name,
             .player-name {
@@ -782,6 +831,15 @@
             .player-photo img {
                 image-rendering: auto;
                 -webkit-font-smoothing: antialiased;
+                object-fit: cover;
+                object-position: center;
+                width: 100%;
+                height: 100%;
+            }
+            
+            .coach-photo {
+                overflow: hidden;
+                border-radius: 15px;
             }
         }
         
@@ -802,9 +860,20 @@
         @media (max-height: 500px) and (orientation: landscape) {
             .coach-photo {
                 height: 180px;
+                overflow: hidden;
+                border-radius: 15px;
             }
             .player-photo {
                 height: 180px;
+                overflow: hidden;
+                border-radius: 15px;
+            }
+            .coach-photo img,
+            .player-photo img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
             }
             .coach-name,
             .player-name {
@@ -821,6 +890,50 @@
             .leadership-title {
                 font-size: 1.2rem;
             }
+        }
+        
+        /* Image Loading Enhancement */
+        .coach-photo img {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .coach-photo img.loaded {
+            opacity: 1;
+        }
+        
+        .coach-photo img.error {
+            opacity: 0;
+        }
+        
+        .coach-photo img.loading {
+            opacity: 0.5;
+        }
+        
+        /* Loading spinner for images */
+        .coach-photo::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-top: 2px solid #22c55e;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            opacity: 0;
+        }
+        
+        .coach-photo img.loading + .coach-photo::after,
+        .coach-photo:has(img.loading)::after {
+            opacity: 1;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -1025,6 +1138,62 @@
                 
                 navContainer.classList.remove('mobile-open');
                 mobileBtn.classList.remove('active');
+            });
+        });
+        
+        // Image loading enhancement for coach photos
+        function enhanceCoachPhotos() {
+            const coachPhotos = document.querySelectorAll('.coach-photo img');
+            
+            coachPhotos.forEach(img => {
+                // Add loading class
+                img.classList.add('loading');
+                
+                // Handle successful load
+                img.addEventListener('load', function() {
+                    this.classList.remove('loading');
+                    this.classList.add('loaded');
+                });
+                
+                // Handle load error
+                img.addEventListener('error', function() {
+                    this.classList.remove('loading');
+                    this.classList.add('error');
+                    console.log('Failed to load image:', this.src);
+                });
+                
+                // Force reload if image fails
+                if (img.complete && img.naturalHeight === 0) {
+                    img.src = img.src + '?t=' + new Date().getTime();
+                }
+            });
+        }
+        
+        // Run image enhancement on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            enhanceCoachPhotos();
+            
+            // Ensure mobile photos are properly sized
+            const isMobile = window.innerWidth <= 768;
+            if (isMobile) {
+                const coachPhotos = document.querySelectorAll('.coach-photo');
+                coachPhotos.forEach(photo => {
+                    photo.style.overflow = 'hidden';
+                    photo.style.borderRadius = '15px';
+                });
+            }
+        });
+        
+        // Handle resize events
+        window.addEventListener('resize', function() {
+            const isMobile = window.innerWidth <= 768;
+            const coachPhotos = document.querySelectorAll('.coach-photo');
+            
+            coachPhotos.forEach(photo => {
+                if (isMobile) {
+                    photo.style.overflow = 'hidden';
+                    photo.style.borderRadius = '15px';
+                }
             });
         });
     </script>
