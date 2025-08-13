@@ -45,8 +45,10 @@
             text-decoration: none;
         }
         .nav-logo img {
-            width: 28px;
-            height: 28px;
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            object-position: center;
         }
         .nav-logo span {
             color: #22c55e;
@@ -679,6 +681,12 @@
             .gallery-caption {
                 font-size: 0.9rem;
             }
+            .gallery-item img {
+                height: 200px;
+            }
+            .video-thumbnail {
+                height: 180px;
+            }
         }
         
         /* Extra Small Mobile (below 360px) */
@@ -695,6 +703,12 @@
             .category-btn {
                 padding: 0.5rem 0.8rem;
                 font-size: 0.7rem;
+            }
+            .gallery-item img {
+                height: 180px;
+            }
+            .video-thumbnail {
+                height: 160px;
             }
         }
         
@@ -714,6 +728,77 @@
             .gallery-item img {
                 image-rendering: -webkit-optimize-contrast;
                 image-rendering: crisp-edges;
+            }
+        }
+        
+        /* Mobile Photo Optimization */
+        @media (max-width: 768px) {
+            .gallery-item img,
+            .video-thumbnail iframe {
+                image-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+            }
+        }
+        
+        /* Touch-friendly gallery interactions */
+        @media (hover: none) and (pointer: coarse) {
+            .gallery-item:hover img {
+                transform: none;
+            }
+            
+            .gallery-item:active {
+                transform: scale(0.98);
+            }
+            
+            .gallery-overlay {
+                transform: translateY(0);
+                opacity: 0.9;
+            }
+        }
+        
+        /* Footer Styles */
+        .site-footer {
+            background: rgba(0, 0, 0, 0.9);
+            border-top: 1px solid rgba(34, 197, 94, 0.2);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-content p {
+            margin: 0.5rem 0;
+            color: #a3a3a3;
+            font-size: 0.9rem;
+        }
+        
+
+        
+        .developer-credit {
+            margin-top: 1rem !important;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(34, 197, 94, 0.2);
+            color: #a3a3a3;
+        }
+        
+        /* Mobile Footer */
+        @media (max-width: 768px) {
+            .site-footer {
+                padding: 1.5rem 0;
+                margin-top: 3rem;
+            }
+            
+            .footer-content {
+                padding: 0 1rem;
+            }
+            
+            .footer-content p {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -930,9 +1015,17 @@
                     Memorial West Hockey Group
                 </a>
             </div>
-        </section>
+                </section>
+        
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <p>&copy; 2024 Memorial West Hockey. All rights reserved.</p>
+                <p class="developer-credit">Website developed by Evan Shi</p>
+            </div>
+        </footer>
     </div>
-
+    
     <script>
         // Media category switching functionality
         function showSection(sectionName) {
