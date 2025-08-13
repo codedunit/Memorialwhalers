@@ -294,6 +294,133 @@
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
+        
+        /* PDF Desktop/Mobile Toggle */
+        .pdf-desktop {
+            display: block;
+        }
+        .pdf-mobile {
+            display: none;
+        }
+        
+        /* Mobile PDF Preview */
+        .pdf-preview {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+        }
+        .pdf-icon {
+            font-size: 4rem;
+            color: #ef4444;
+            margin-bottom: 1rem;
+        }
+        .pdf-preview h3 {
+            color: #22c55e;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .pdf-preview p {
+            color: #a3a3a3;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .pdf-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .pdf-view-btn,
+        .pdf-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .pdf-view-btn {
+            background: #22c55e;
+            color: #fff;
+            border: 1px solid #22c55e;
+        }
+        .pdf-view-btn:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+        }
+        .pdf-download-btn {
+            background: transparent;
+            color: #22c55e;
+            border: 1px solid #22c55e;
+        }
+        .pdf-download-btn:hover {
+            background: #22c55e;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        
+        /* PDF Info Section */
+        .pdf-info {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(34, 197, 94, 0.2);
+        }
+        .pdf-info p {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            color: #a3a3a3;
+        }
+        .pdf-size {
+            color: #22c55e !important;
+            font-weight: 500;
+        }
+        .pdf-format {
+            color: #a3a3a3;
+        }
+        
+        /* Enhanced Mobile Button Styles */
+        .pdf-view-btn,
+        .pdf-download-btn {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            font-family: inherit;
+            font-size: inherit;
+        }
+        
+        /* Mobile Instructions */
+        .mobile-instructions {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .mobile-instructions p {
+            margin: 0;
+            color: #22c55e;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .mobile-instructions strong {
+            color: #fff;
+        }
+        
+        /* Mobile Device Specific Styles */
+        .mobile-device .pdf-preview {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(34, 197, 94, 0.4);
+        }
+        .mobile-device .pdf-view-btn,
+        .mobile-device .pdf-download-btn {
+            min-height: 48px; /* Touch-friendly button size */
+        }
+        
         .pdf-download {
             margin-top: 2rem;
         }
@@ -433,6 +560,46 @@
             .pdf-container iframe {
                 height: 400px;
             }
+            /* Show mobile PDF preview, hide desktop iframe */
+            .pdf-desktop {
+                display: none;
+            }
+            .pdf-mobile {
+                display: block;
+            }
+            .pdf-preview {
+                padding: 1.5rem;
+            }
+            .pdf-icon {
+                font-size: 3rem;
+            }
+            .pdf-preview h3 {
+                font-size: 1.3rem;
+            }
+            .pdf-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            .pdf-view-btn,
+            .pdf-download-btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+            .pdf-info {
+                margin-top: 1rem;
+                padding-top: 1rem;
+            }
+            .pdf-info p {
+                font-size: 0.8rem;
+            }
+            .mobile-instructions {
+                padding: 0.8rem;
+                margin-bottom: 1.5rem;
+            }
+            .mobile-instructions p {
+                font-size: 0.8rem;
+            }
             .section-title {
                 font-size: 2rem;
             }
@@ -472,6 +639,13 @@
             .pdf-container iframe {
                 height: 350px;
             }
+            /* Show mobile PDF preview, hide desktop iframe */
+            .pdf-desktop {
+                display: none;
+            }
+            .pdf-mobile {
+                display: block;
+            }
         }
         
         /* Mobile Small (below 480px) */
@@ -491,6 +665,46 @@
             }
             .pdf-container iframe {
                 height: 300px;
+            }
+            /* Show mobile PDF preview, hide desktop iframe */
+            .pdf-desktop {
+                display: none;
+            }
+            .pdf-mobile {
+                display: block;
+            }
+            .pdf-preview {
+                padding: 1.5rem;
+            }
+            .pdf-icon {
+                font-size: 3rem;
+            }
+            .pdf-preview h3 {
+                font-size: 1.3rem;
+            }
+            .pdf-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            .pdf-view-btn,
+            .pdf-download-btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+            .pdf-info {
+                margin-top: 1rem;
+                padding-top: 1rem;
+            }
+            .pdf-info p {
+                font-size: 0.8rem;
+            }
+            .mobile-instructions {
+                padding: 0.7rem;
+                margin-bottom: 1.2rem;
+            }
+            .mobile-instructions p {
+                font-size: 0.75rem;
             }
             .section-title {
                 font-size: 1.6rem;
@@ -516,6 +730,46 @@
             .pdf-container iframe {
                 height: 250px;
             }
+            /* Show mobile PDF preview, hide desktop iframe */
+            .pdf-desktop {
+                display: none;
+            }
+            .pdf-mobile {
+                display: block;
+            }
+            .pdf-preview {
+                padding: 1rem;
+            }
+            .pdf-icon {
+                font-size: 2.5rem;
+            }
+            .pdf-preview h3 {
+                font-size: 1.2rem;
+            }
+            .pdf-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            .pdf-view-btn,
+            .pdf-download-btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+            .pdf-info {
+                margin-top: 0.8rem;
+                padding-top: 0.8rem;
+            }
+            .pdf-info p {
+                font-size: 0.7rem;
+            }
+            .mobile-instructions {
+                padding: 0.6rem;
+                margin-bottom: 1rem;
+            }
+            .mobile-instructions p {
+                font-size: 0.7rem;
+            }
             .download-btn {
                 padding: 0.7rem 1.2rem;
                 font-size: 0.8rem;
@@ -532,6 +786,46 @@
             }
             .pdf-container iframe {
                 height: 200px;
+            }
+            /* Show mobile PDF preview, hide desktop iframe */
+            .pdf-desktop {
+                display: none;
+            }
+            .pdf-mobile {
+                display: block;
+            }
+            .pdf-preview {
+                padding: 1rem;
+            }
+            .pdf-icon {
+                font-size: 2.5rem;
+            }
+            .pdf-preview h3 {
+                font-size: 1.2rem;
+            }
+            .pdf-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            .pdf-view-btn,
+            .pdf-download-btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+            .pdf-info {
+                margin-top: 0.8rem;
+                padding-top: 0.8rem;
+            }
+            .pdf-info p {
+                font-size: 0.7rem;
+            }
+            .mobile-instructions {
+                padding: 0.6rem;
+                margin-bottom: 1rem;
+            }
+            .mobile-instructions p {
+                font-size: 0.7rem;
             }
         }
         
@@ -579,9 +873,37 @@
         <section class="sponsorship-pdf-section">
             <h2 class="section-title">Sponsorship Opportunities</h2>
             <p class="section-description">View our comprehensive sponsorship presentation to learn about partnership opportunities and benefits.</p>
-            <div class="pdf-container">
+            
+            <!-- Desktop PDF Viewer -->
+            <div class="pdf-container pdf-desktop">
                 <iframe src="documents/MemorialWestSponsor8132025.pdf" width="100%" height="600px" frameborder="0"></iframe>
             </div>
+            
+            <!-- Mobile PDF Preview -->
+            <div class="pdf-container pdf-mobile">
+                <div class="pdf-preview">
+                    <div class="pdf-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Memorial West Sponsorship Guide</h3>
+                    <p>View our comprehensive sponsorship opportunities and partnership benefits.</p>
+                    <div class="pdf-actions">
+                        <button onclick="openPDFInNewTab()" class="pdf-view-btn">
+                            <i class="fas fa-eye"></i>
+                            View PDF
+                        </button>
+                        <button onclick="downloadPDF()" class="pdf-download-btn">
+                            <i class="fas fa-download"></i>
+                            Download
+                        </button>
+                    </div>
+                    <div class="pdf-info">
+                        <p class="pdf-size">File size: ~2.5 MB</p>
+                        <p class="pdf-format">Format: PDF Document</p>
+                    </div>
+                </div>
+            </div>
+            
             <div class="pdf-download">
                 <a href="documents/MemorialWestSponsor8132025.pdf" target="_blank" class="download-btn">
                     <i class="fas fa-download"></i>
@@ -638,6 +960,133 @@
                 mobileBtn.classList.remove('active');
             });
         });
+        
+        // PDF Functions for Mobile
+        function openPDFInNewTab() {
+            const pdfUrl = 'documents/MemorialWestSponsor8132025.pdf';
+            
+            // Try to open in new tab first
+            try {
+                const newWindow = window.open(pdfUrl, '_blank');
+                if (newWindow) {
+                    newWindow.focus();
+                    
+                    // Check if the window actually opened successfully
+                    setTimeout(() => {
+                        if (newWindow.closed || newWindow.document.readyState === 'complete') {
+                            // Window opened successfully
+                            console.log('PDF opened in new tab');
+                        } else {
+                            // Fallback to download
+                            downloadPDF();
+                        }
+                    }, 1000);
+                } else {
+                    // Fallback: try to download
+                    downloadPDF();
+                }
+            } catch (error) {
+                console.log('Could not open PDF in new tab, downloading instead');
+                downloadPDF();
+            }
+        }
+        
+        function downloadPDF() {
+            const pdfUrl = 'documents/MemorialWestSponsor8132025.pdf';
+            
+            // Create a temporary link element
+            const link = document.createElement('a');
+            link.href = pdfUrl;
+            link.download = 'MemorialWestSponsorshipGuide.pdf';
+            link.target = '_blank';
+            
+            // Append to body, click, and remove
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // Detect mobile device and ensure proper PDF display
+        function detectMobileAndAdjustPDF() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+                            window.innerWidth <= 768;
+            
+            if (isMobile) {
+                // Ensure mobile PDF preview is visible
+                const mobilePreview = document.querySelector('.pdf-mobile');
+                const desktopPreview = document.querySelector('.pdf-desktop');
+                
+                if (mobilePreview && desktopPreview) {
+                    mobilePreview.style.display = 'block';
+                    desktopPreview.style.display = 'none';
+                }
+                
+                // Add mobile-specific classes for better styling
+                document.body.classList.add('mobile-device');
+            } else {
+                document.body.classList.remove('mobile-device');
+            }
+        }
+        
+        // Enhanced mobile PDF handling
+        function handleMobilePDF() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+                            window.innerWidth <= 768;
+            
+            if (isMobile) {
+                // Show mobile-specific instructions
+                const mobileInstructions = document.createElement('div');
+                mobileInstructions.className = 'mobile-instructions';
+                mobileInstructions.innerHTML = `
+                    <p><strong>Mobile Tip:</strong> For the best viewing experience, tap "View PDF" to open in a new tab, or "Download" to save to your device.</p>
+                `;
+                
+                const pdfSection = document.querySelector('.sponsorship-pdf-section');
+                if (pdfSection && !document.querySelector('.mobile-instructions')) {
+                    pdfSection.insertBefore(mobileInstructions, pdfSection.firstChild);
+                }
+                
+                // Ensure mobile PDF preview is always visible on mobile
+                const mobilePreview = document.querySelector('.pdf-mobile');
+                const desktopPreview = document.querySelector('.pdf-desktop');
+                
+                if (mobilePreview && desktopPreview) {
+                    mobilePreview.style.display = 'block';
+                    desktopPreview.style.display = 'none';
+                }
+            }
+        }
+        
+        // Run on page load and resize
+        document.addEventListener('DOMContentLoaded', function() {
+            detectMobileAndAdjustPDF();
+            handleMobilePDF();
+            
+            // Debug: Log mobile detection
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+                            window.innerWidth <= 768;
+            console.log('Mobile detected:', isMobile);
+            console.log('User agent:', navigator.userAgent);
+            console.log('Screen width:', window.innerWidth);
+        });
+        window.addEventListener('resize', function() {
+            detectMobileAndAdjustPDF();
+            handleMobilePDF();
+        });
+        
+        // Add touch event support for mobile
+        if ('ontouchstart' in window) {
+            document.addEventListener('touchstart', function() {
+                // Ensure mobile PDF preview is visible on touch devices
+                const mobilePreview = document.querySelector('.pdf-mobile');
+                const desktopPreview = document.querySelector('.pdf-desktop');
+                
+                if (mobilePreview && desktopPreview) {
+                    mobilePreview.style.display = 'block';
+                    desktopPreview.style.display = 'none';
+                }
+            });
+        }
     </script>
 </body>
 </html>
