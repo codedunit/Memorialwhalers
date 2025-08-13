@@ -162,6 +162,21 @@
             .hero-bg img {
                 object-position: center 30%;
             }
+            /* Remove dark container on mobile - make overlay lighter */
+            .hero-bg::after {
+                background: linear-gradient(90deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.2) 100%);
+            }
+            /* Make text smaller on mobile */
+            .hero-title {
+                font-size: 2.5rem;
+                margin-top: 10px;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            .hero-description {
+                font-size: 1rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -173,6 +188,21 @@
             }
             .hero-bg img {
                 object-position: center 40%;
+            }
+            /* Even lighter overlay for small mobile */
+            .hero-bg::after {
+                background: linear-gradient(90deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.1) 100%);
+            }
+            /* Make text even smaller on small mobile */
+            .hero-title {
+                font-size: 2rem;
+                margin-top: 15px;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            .hero-description {
+                font-size: 0.9rem;
             }
         }
         .hero-bg::after {
@@ -202,20 +232,7 @@
             color: #fff;
         }
         
-        /* Responsive hero title adjustments */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 3rem;
-                margin-top: 10px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2.5rem;
-                margin-top: 15px;
-            }
-        }
+
         .hero-subtitle {
             font-size: 1.5rem;
             color: #22c55e;
