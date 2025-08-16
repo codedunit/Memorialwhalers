@@ -448,6 +448,175 @@
             font-size: 1.2rem;
         }
 
+        /* Sponsorship Form Section */
+        .sponsorship-form-section {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+        
+        .sponsorship-form-embed {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 15px;
+            background: #fff;
+        }
+        
+        .form-link-container {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        
+        .form-direct-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        
+        .form-direct-link:hover {
+            background: linear-gradient(135deg, #16a34a, #15803d);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+        }
+        
+        .form-direct-link i {
+            font-size: 0.9rem;
+        }
+        
+        .form-note {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        
+        /* Form Desktop/Mobile Toggle */
+        .form-desktop {
+            display: block;
+        }
+        .form-mobile {
+            display: none;
+        }
+        
+        /* Mobile Form Preview */
+        .form-preview {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+        }
+        .form-icon {
+            font-size: 4rem;
+            color: #22c55e;
+            margin-bottom: 1rem;
+        }
+        .form-preview h3 {
+            color: #22c55e;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .form-preview p {
+            color: #a3a3a3;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .form-view-btn,
+        .form-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            font-family: inherit;
+            font-size: inherit;
+        }
+        .form-view-btn {
+            background: #22c55e;
+            color: #fff;
+            border: 1px solid #22c55e;
+        }
+        .form-view-btn:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+        }
+        .form-download-btn {
+            background: transparent;
+            color: #22c55e;
+            border: 1px solid #22c55e;
+        }
+        .form-download-btn:hover {
+            background: #22c55e;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        
+        /* Form Info Section */
+        .form-info {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(34, 197, 94, 0.2);
+        }
+        .form-info p {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            color: #a3a3a3;
+        }
+        .form-type {
+            color: #22c55e !important;
+            font-weight: 500;
+        }
+        
+        /* Form Direct Link */
+        .form-direct-link {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .form-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        .form-btn:hover {
+            background: linear-gradient(135deg, #16a34a, #15803d);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
+        }
+        .form-btn i {
+            font-size: 1.2rem;
+        }
+
         /* Responsive Design */
         
         /* Large Desktop (1200px and up) */
@@ -569,6 +738,16 @@
             .pdf-mobile {
                 display: block;
             }
+            /* Show mobile form preview, hide desktop iframe */
+            .form-desktop {
+                display: none;
+            }
+            .form-mobile {
+                display: block;
+            }
+            .sponsorship-form-embed {
+                height: 400px;
+            }
             .pdf-preview {
                 padding: 1.5rem;
             }
@@ -601,6 +780,36 @@
             }
             .mobile-instructions p {
                 font-size: 0.8rem;
+            }
+            .form-preview {
+                padding: 1.5rem;
+            }
+            .form-icon {
+                font-size: 3rem;
+            }
+            .form-preview h3 {
+                font-size: 1.3rem;
+            }
+            .form-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            .form-view-btn,
+            .form-download-btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+            .form-info {
+                margin-top: 1rem;
+                padding-top: 1rem;
+            }
+            .form-info p {
+                font-size: 0.8rem;
+            }
+            .form-direct-link {
+                padding: 0.7rem 1.3rem;
+                font-size: 0.9rem;
             }
             .section-title {
                 font-size: 2rem;
@@ -961,6 +1170,50 @@
             </div>
         </section>
 
+        <!-- Sponsorship Interest Form Section -->
+        <section class="sponsorship-form-section">
+            <h2 class="section-title">Interested in Sponsoring?</h2>
+            <p class="section-description">Fill out our sponsorship interest form below to get started with your partnership.</p>
+            
+            <!-- Desktop Form Viewer -->
+            <div class="form-container form-desktop">
+                <iframe 
+                    src="https://forms.gle/uBnwQZXTqaSjVgPJ7?embedded=true" 
+                    class="sponsorship-form-embed"
+                    title="Memorial West Sponsorship Interest Form">
+                </iframe>
+                
+                <div class="form-link-container">
+                    <p class="form-note">If the form above doesn't load, please use the button below to access it directly.</p>
+                    <a href="https://forms.gle/uBnwQZXTqaSjVgPJ7" target="_blank" class="form-direct-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        Open Sponsorship Form
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Mobile Form Preview -->
+            <div class="form-container form-mobile">
+                <div class="form-preview">
+                    <div class="form-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Sponsorship Interest Form</h3>
+                    <div class="form-actions">
+                        <button onclick="openFormInNewTab()" class="form-view-btn">
+                            <i class="fas fa-external-link-alt"></i>
+                            Open Form
+                        </button>
+                    </div>
+                    <div class="form-info">
+                        <p class="form-type">Google Forms</p>
+                        <p class="form-access">Access via web browser</p>
+                    </div>
+                </div>
+            </div>
+            
+        
+
         <!-- Social Media Section -->
         <section class="social-section">
             <h2 class="social-title">Follow Us</h2>
@@ -1063,7 +1316,31 @@
             document.body.removeChild(link);
         }
         
-        // Detect mobile device and ensure proper PDF display
+        // Form Functions for Mobile
+        function openFormInNewTab() {
+            const formUrl = 'https://forms.gle/uBnwQZXTqaSjVgPJ7';
+            
+            try {
+                const newWindow = window.open(formUrl, '_blank');
+                if (newWindow) {
+                    newWindow.focus();
+                    console.log('Form opened in new tab');
+                } else {
+                    // Fallback: redirect in same tab
+                    window.location.href = formUrl;
+                }
+            } catch (error) {
+                console.log('Could not open form in new tab, redirecting instead');
+                window.location.href = formUrl;
+            }
+        }
+        
+        function downloadForm() {
+            // For Google Forms, we can't actually download, so we open in new tab
+            openFormInNewTab();
+        }
+        
+        // Detect mobile device and ensure proper PDF and form display
         function detectMobileAndAdjustPDF() {
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
                             window.innerWidth <= 768;
@@ -1076,6 +1353,15 @@
                 if (mobilePreview && desktopPreview) {
                     mobilePreview.style.display = 'block';
                     desktopPreview.style.display = 'none';
+                }
+                
+                // Ensure mobile form preview is visible
+                const mobileFormPreview = document.querySelector('.form-mobile');
+                const desktopFormPreview = document.querySelector('.form-desktop');
+                
+                if (mobileFormPreview && desktopFormPreview) {
+                    mobileFormPreview.style.display = 'block';
+                    desktopFormPreview.style.display = 'none';
                 }
                 
                 // Add mobile-specific classes for better styling
@@ -1130,6 +1416,30 @@
             detectMobileAndAdjustPDF();
             handleMobilePDF();
         });
+        
+        // Check if form loads successfully
+        function checkFormLoad() {
+            const iframe = document.querySelector('.sponsorship-form-embed');
+            const fallback = document.querySelector('.form-fallback');
+            
+            if (iframe && fallback) {
+                // Set a timeout to check if the iframe loads
+                setTimeout(() => {
+                    try {
+                        // Try to access iframe content (this will fail if blocked)
+                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                        if (iframeDoc) {
+                            // Iframe loaded successfully, hide fallback
+                            fallback.style.display = 'none';
+                        }
+                    } catch (error) {
+                        // Iframe failed to load or is blocked, show fallback
+                        console.log('Form iframe blocked or failed to load, showing fallback');
+                        fallback.style.display = 'block';
+                    }
+                }, 3000); // Wait 3 seconds for the iframe to load
+            }
+        }
         
         // Add touch event support for mobile
         if ('ontouchstart' in window) {
